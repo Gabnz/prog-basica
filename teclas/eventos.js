@@ -5,14 +5,17 @@ var teclas = {
 	RIGHT: 39
 };
 
-document.addEventListener("keydown", dibujarTeclado);
+//document.addEventListener("keydown", dibujarTeclado);
+document.addEventListener("mousedown", presionarMouse);
+document.addEventListener("mousemove", moverMouse);
+document.addEventListener("mouseup", soltarMouse);
 
 var cuadrito = document.getElementById('area_de_dibujo');
 var papel = cuadrito.getContext('2d');
 var x = 100;
 var y = 100;
 
-dibujarLinea("red", x - 1, y - 1, x + 1, y + 1, papel);
+//dibujarLinea("red", x - 1, y - 1, x + 1, y + 1, papel);
 
 function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo){
   //empieza el camino
@@ -26,6 +29,18 @@ function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo){
   lienzo.stroke();
   //finaliza el camino
   lienzo.closePath();
+}
+
+function presionarMouse (event) {
+	console.log("presionaste el mouse");
+}
+
+function moverMouse (event) {
+	console.log("moviste el mouse");
+}
+
+function soltarMouse (event) {
+	console.log("soltaste el mouse");
 }
 
 function dibujarTeclado (evento){
