@@ -5,17 +5,18 @@ var teclas = {
 	RIGHT: 39
 };
 
-//document.addEventListener("keydown", dibujarTeclado);
-document.addEventListener("mousedown", presionarMouse);
-document.addEventListener("mousemove", moverMouse);
-document.addEventListener("mouseup", soltarMouse);
+document.addEventListener("keydown", dibujarTeclado);
 
 var cuadrito = document.getElementById('area_de_dibujo');
 var papel = cuadrito.getContext('2d');
 var x = 100;
 var y = 100;
 
-//dibujarLinea("red", x - 1, y - 1, x + 1, y + 1, papel);
+dibujarLinea("red", x - 1, y - 1, x + 1, y + 1, papel);
+dibujarLinea("red", 0, 0, cuadrito.width, 0, papel);
+dibujarLinea("red", cuadrito.width, 0, cuadrito.width, cuadrito.height, papel);
+dibujarLinea("red", cuadrito.width, cuadrito.height, 0, cuadrito.height, papel);
+dibujarLinea("red", 0, cuadrito.height, 0, 0, papel);
 
 function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo){
   //empieza el camino
@@ -31,21 +32,9 @@ function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo){
   lienzo.closePath();
 }
 
-function presionarMouse (event) {
-	console.log("presionaste el mouse");
-}
-
-function moverMouse (event) {
-	console.log("moviste el mouse");
-}
-
-function soltarMouse (event) {
-	console.log("soltaste el mouse");
-}
-
 function dibujarTeclado (evento){
 	var colorcito = "blue";
-	var movimiento = 1;
+	var movimiento = 3;
 	switch (evento.keyCode) {
 		case teclas.UP:
 			dibujarLinea(colorcito, x, y, x, y - movimiento, papel);
